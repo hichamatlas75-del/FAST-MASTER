@@ -759,8 +759,8 @@ function installPWA() {
 }
 
 // --- Google Cloud & Drive Sync Engine ---
-const GOOGLE_CLIENT_ID = '511788825944-lq3emrev9q9eeoir22nfpoc51655oech.apps.googleusercontent.com';
-const GOOGLE_SCOPES = 'https://www.googleapis.com/auth/drive.appdata https://www.googleapis.com/auth/drive.file https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile';
+const GOOGLE_CLIENT_ID = '803879341597-0qf5rr48g7ei1etokr43ss58kv0imbs8.apps.googleusercontent.com';
+const GOOGLE_SCOPES = 'https://www.googleapis.com/auth/drive.appdata https://www.googleapis.com/auth/drive.file https://www.googleapis.com/auth/drive.readonly https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile';
 const BACKUP_FILE_NAME = 'fastmaster_backup.json';
 
 class GoogleDriveSync {
@@ -871,26 +871,53 @@ class GoogleDriveSync {
         this.saveAuth();
         showToast('Connecté avec succès : ' + (this.auth.email || 'Google Drive'));
         
-        // Immediate sync
-        this.uploadBackup(false);
+        // Immediate download or sync
+        await this.downloadBackup(false);
     }
 
     async searchBackupFile() {
         const query = encodeURIComponent("name = '" + BACKUP_FILE_NAME + "' and trashed = false");
-        const url = 'https://www.googleapis.com/drive/v3/files?spaces=appDataFolder&q=' + query + '&fields=files(id,name,modifiedTime)';
         
-        const resp = await fetch(url, {
-            headers: { Authorization: 'Bearer ' + this.auth.accessToken }
-        });
-
-        if (resp.status === 401) {
-            this.auth.accessToken = null;
-            this.saveAuth();
-            throw new Error('Token expiré');
+        // 1. Search in appDataFolder (standard Android app hidden storage)
+        try {
+            const urlAppData = 'https://www.googleapis.com/drive/v3/files?spaces=appDataFolder&q=' + query + '&fields=files(id,name,modifiedTime)';
+            const resp = await fetch(urlAppData, {
+                headers: { Authorization: 'Bearer ' + this.auth.accessToken }
+            });
+            if (resp.status === 401) {
+                this.auth.accessToken = null;
+                this.saveAuth();
+                throw new Error('Token expiré');
+            }
+            if (resp.ok) {
+                const data = await resp.json();
+                if (data.files && data.files.length > 0) {
+                    console.log('Trouvé dans appDataFolder:', data.files[0]);
+                    return data.files[0];
+                }
+            }
+        } catch (e) {
+            console.warn('appDataFolder query error:', e);
         }
 
-        const data = await resp.json();
-        return (data.files && data.files.length > 0) ? data.files[0] : null;
+        // 2. Search in root Drive files
+        try {
+            const urlDrive = 'https://www.googleapis.com/drive/v3/files?spaces=drive&q=' + query + '&fields=files(id,name,modifiedTime)';
+            const resp2 = await fetch(urlDrive, {
+                headers: { Authorization: 'Bearer ' + this.auth.accessToken }
+            });
+            if (resp2.ok) {
+                const data2 = await resp2.json();
+                if (data2.files && data2.files.length > 0) {
+                    console.log('Trouvé dans Google Drive root:', data2.files[0]);
+                    return data2.files[0];
+                }
+            }
+        } catch (e) {
+            console.warn('Drive space query error:', e);
+        }
+
+        return null;
     }
 
     async uploadBackup(isManual = false) {
