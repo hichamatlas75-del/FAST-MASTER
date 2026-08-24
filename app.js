@@ -568,22 +568,157 @@ function closeModal(id) {
     if (modal) modal.classList.remove('open');
 }
 
-function exportDataBackup() {
-    const backupObj = {
-        exportDate: new Date().toISOString(),
-        version: '1.6-pwa',
-        user: state.user,
-        fasting: state.fasting,
-        sessions: state.sessions,
-        weights: state.weights
-    };
+function buildUniversalApkPayload() {
+    const activePlanKey = state.fasting.planKey || 'PLAN_16_8';
+    
+    // Convert sessions to 100% Android APK format
+    const apkSessions = (state.sessions || []).map(s => {
+        const planKey = s.planKey || s.plan || activePlanKey;
+        const startTime = typeof s.startTime === 'number' ? s.startTime : new Date(s.startTime).getTime();
+        const endTime = s.endTime ? (typeof s.endTime === 'number' ? s.endTime : new Date(s.endTime).getTime()) : startTime;
+        return {
+            id: typeof s.id === 'number' ? s.id : (parseInt(s.id) || startTime),
+            plan: planKey,
+            startTime: startTime,
+            endTime: endTime,
+            completed: !!s.completed
+        };
+    });
 
+    // Convert weight history to 100% Android APK format
+    const apkWeightHistory = (state.weights || []).map(w => {
+        let dateMillis = Date.now();
+        if (typeof w.date === 'number') {
+            dateMillis = w.date;
+        } else if (typeof w.date === 'string') {
+            const parsed = new Date(w.date).getTime();
+            if (!isNaN(parsed)) dateMillis = parsed;
+        }
+        return {
+            date: dateMillis,
+            weight: typeof w.weight === 'number' ? w.weight : parseFloat(w.weight) || 70.0
+        };
+    });
+
+    return {
+        userName: state.user.name || "Jeûneur",
+        photoUri: "",
+        photoBase64: "",
+        selectedPlan: activePlanKey,
+        sessions: apkSessions,
+        darkMode: !!state.user.darkMode,
+        weight: typeof state.user.weight === 'number' ? state.user.weight : parseFloat(state.user.weight) || 70.0,
+        height: parseInt(state.user.height) || 175,
+        scheduleHour: parseInt(state.user.scheduleHour) || 20,
+        scheduleMinute: parseInt(state.user.scheduleMinute) || 0,
+        autoStart: !!state.user.autoStart,
+        weightHistory: apkWeightHistory,
+        isFastingActive: !!state.fasting.isActive,
+        fastingStartTime: state.fasting.isActive ? (state.fasting.startTime || 0) : 0,
+        fastingPlanActive: activePlanKey,
+        lastManualStartDate: Date.now(),
+        version: "1.6",
+        exportDate: new Date().toISOString()
+    };
+}
+
+function applyUniversalApkPayload(data) {
+    if (!data) return;
+
+    // 1. User Profile & Settings
+    if (data.userName !== undefined) state.user.name = data.userName;
+    else if (data.user && data.user.name) state.user.name = data.user.name;
+
+    if (data.weight !== undefined) state.user.weight = parseFloat(data.weight) || 70;
+    else if (data.user && data.user.weight) state.user.weight = parseFloat(data.user.weight) || 70;
+
+    if (data.height !== undefined) state.user.height = parseInt(data.height) || 175;
+    else if (data.user && data.user.height) state.user.height = parseInt(data.user.height) || 175;
+
+    if (data.darkMode !== undefined) state.user.darkMode = !!data.darkMode;
+    else if (data.user && data.user.darkMode !== undefined) state.user.darkMode = !!data.user.darkMode;
+
+    if (data.scheduleHour !== undefined) state.user.scheduleHour = parseInt(data.scheduleHour);
+    if (data.scheduleMinute !== undefined) state.user.scheduleMinute = parseInt(data.scheduleMinute);
+    if (data.autoStart !== undefined) state.user.autoStart = !!data.autoStart;
+
+    // 2. Active Fasting Session
+    const planKey = data.fastingPlanActive || data.selectedPlan || (data.fasting && data.fasting.planKey) || 'PLAN_16_8';
+    state.fasting.planKey = PLANS[planKey] ? planKey : 'PLAN_16_8';
+
+    if (data.isFastingActive !== undefined) {
+        state.fasting.isActive = !!data.isFastingActive;
+        state.fasting.startTime = data.fastingStartTime || (state.fasting.isActive ? Date.now() : 0);
+    } else if (data.fasting) {
+        state.fasting.isActive = !!data.fasting.isActive;
+        state.fasting.startTime = data.fasting.startTime || 0;
+    }
+
+    // 3. Fasting Sessions History
+    const rawSessions = Array.isArray(data.sessions) ? data.sessions : [];
+    state.sessions = rawSessions.map(s => {
+        const pKey = s.plan || s.planKey || 'PLAN_16_8';
+        const pObj = PLANS[pKey] || PLANS.PLAN_16_8;
+        const startT = typeof s.startTime === 'number' ? s.startTime : new Date(s.startTime).getTime();
+        const endT = s.endTime ? (typeof s.endTime === 'number' ? s.endTime : new Date(s.endTime).getTime()) : startT;
+        const dur = s.durationMillis || (endT - startT);
+        return {
+            id: String(s.id || startT),
+            planKey: pKey,
+            planName: pObj.name,
+            startTime: startT,
+            endTime: endT,
+            durationMillis: dur,
+            completed: !!s.completed
+        };
+    });
+
+    // 4. Weight History
+    if (Array.isArray(data.weightHistory)) {
+        state.weights = data.weightHistory.map(w => {
+            const dateStr = typeof w.date === 'number' ? new Date(w.date).toISOString() : String(w.date || new Date().toISOString());
+            return {
+                id: String(typeof w.date === 'number' ? w.date : Date.now()),
+                weight: parseFloat(w.weight) || 70,
+                date: dateStr
+            };
+        });
+    } else if (Array.isArray(data.weights)) {
+        state.weights = data.weights;
+    }
+
+    if (state.weights.length > 0 && (!data.weight && !data.user?.weight)) {
+        state.user.weight = state.weights[0].weight;
+    }
+
+    state.save();
+    
+    document.body.classList.toggle('light-theme', !state.user.darkMode);
+    const greetingEl = document.getElementById('greetingName');
+    if (greetingEl) greetingEl.textContent = 'Bonjour, ' + (state.user.name || 'Jeûneur') + ' 👋';
+    const nameInput = document.getElementById('inputUserName');
+    if (nameInput) nameInput.value = state.user.name || 'Jeûneur';
+    const heightInput = document.getElementById('inputUserHeight');
+    if (heightInput) heightInput.value = state.user.height || 175;
+    const switchDark = document.getElementById('switchDarkMode');
+    if (switchDark) switchDark.checked = state.user.darkMode;
+    const switchAuto = document.getElementById('switchAutoStart');
+    if (switchAuto) switchAuto.checked = state.user.autoStart;
+
+    updateTimer();
+    renderPlans();
+    renderWeightView();
+    renderHistoryView();
+}
+
+function exportDataBackup() {
+    const backupObj = buildUniversalApkPayload();
     const dataStr = 'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(backupObj, null, 2));
     const dlAnchor = document.createElement('a');
     dlAnchor.setAttribute('href', dataStr);
-    dlAnchor.setAttribute('download', 'fastmaster_backup_' + new Date().toISOString().slice(0,10) + '.json');
+    dlAnchor.setAttribute('download', 'fastmaster_backup.json');
     dlAnchor.click();
-    showToast('Sauvegarde exportée avec succès !');
+    showToast('Sauvegarde compatible APK exportée avec succès !');
 }
 
 function importDataBackup(event) {
@@ -594,15 +729,8 @@ function importDataBackup(event) {
     reader.onload = (e) => {
         try {
             const data = JSON.parse(e.target.result);
-            if (data.user) state.user = { ...state.user, ...data.user };
-            if (data.sessions) state.sessions = data.sessions;
-            if (data.weights) state.weights = data.weights;
-            state.save();
-            updateTimer();
-            renderPlans();
-            renderWeightView();
-            renderHistoryView();
-            showToast('Données restaurées avec succès !');
+            applyUniversalApkPayload(data);
+            showToast('Données APK restaurées avec succès !');
         } catch (err) {
             showToast('Fichier de sauvegarde invalide.');
         }
@@ -772,15 +900,7 @@ class GoogleDriveSync {
         }
 
         try {
-            const payload = {
-                exportDate: new Date().toISOString(),
-                version: '1.6',
-                user: state.user,
-                fasting: state.fasting,
-                sessions: state.sessions,
-                weights: state.weights
-            };
-
+            const payload = buildUniversalApkPayload();
             const jsonStr = JSON.stringify(payload);
             const file = await this.searchBackupFile();
 
@@ -831,7 +951,7 @@ class GoogleDriveSync {
             this.saveAuth();
 
             if (isManual) {
-                showToast('☁️ Données sauvegardées sur Google Drive !');
+                showToast('☁️ Données synchronisées avec Google Cloud !');
             }
             return true;
         } catch (e) {
@@ -862,22 +982,12 @@ class GoogleDriveSync {
             if (!resp.ok) throw new Error('Échec téléchargement');
 
             const cloudData = await resp.json();
-            
-            if (cloudData.user) state.user = { ...state.user, ...cloudData.user };
-            if (cloudData.fasting) state.fasting = { ...state.fasting, ...cloudData.fasting };
-            if (cloudData.sessions) state.sessions = cloudData.sessions;
-            if (cloudData.weights) state.weights = cloudData.weights;
-            
-            state.save();
-            updateTimer();
-            renderPlans();
-            renderWeightView();
-            renderHistoryView();
+            applyUniversalApkPayload(cloudData);
 
             this.auth.lastSyncTime = new Date().toISOString();
             this.saveAuth();
 
-            showToast('📥 Données restaurées depuis Google Drive !');
+            showToast('📥 Données synchronisées depuis Google Drive !');
             return true;
         } catch (e) {
             console.error('Download backup error:', e);

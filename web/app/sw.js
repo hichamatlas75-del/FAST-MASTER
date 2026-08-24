@@ -1,9 +1,9 @@
-﻿const CACHE_NAME = 'fastmaster-pwa-v1';
+const CACHE_NAME = 'fastmaster-pwa-v2';
 const ASSETS = [
   './',
   './index.html',
   './style.css',
-  './app.js',
+  './app.js?v=2.0',
   './manifest.json',
   './icons/icon-192.png',
   './icons/icon-512.png',
