@@ -1,20 +1,21 @@
-﻿# Android Studio & Build Artifacts (Keep local only)
-app/
-build/
-builds/
+﻿# Gradle and build caches
 .gradle/
+build/
+app/build/
+**/build/
+/captures/
+.externalNativeBuild/
+.cxx/
+
+# IDE files
 .idea/
-gradle/
-gradlew
-gradlew.bat
-build.gradle.kts
-settings.gradle.kts
-gradle.properties
-local.properties
 *.iml
+.DS_Store
+
+# Local properties & Security Keystores
+local.properties
 *.jks
 *.keystore
+
+# Firebase temp
 .firebase/
-firebase.json
-.firebaserc
-web/
