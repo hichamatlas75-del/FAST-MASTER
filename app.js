@@ -759,7 +759,7 @@ function installPWA() {
 }
 
 // --- Google Cloud & Drive Sync Engine ---
-const GOOGLE_CLIENT_ID = '803879341597-0qf5rr48g7ei1etokr43ss58kv0imbs8.apps.googleusercontent.com';
+const GOOGLE_CLIENT_ID = '511788825944-lq3emrev9q9eeoir22nfpoc51655oech.apps.googleusercontent.com';
 const GOOGLE_SCOPES = 'https://www.googleapis.com/auth/drive.appdata https://www.googleapis.com/auth/drive.file https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile';
 const BACKUP_FILE_NAME = 'fastmaster_backup.json';
 
