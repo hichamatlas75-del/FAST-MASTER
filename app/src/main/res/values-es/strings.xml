@@ -1,0 +1,224 @@
+<resources>
+    <string name="app_name">Fast Master</string>
+
+    <!-- Navigation -->
+    <string name="nav_home">Inicio</string>
+    <string name="nav_plans">Ayuno</string>
+    <string name="nav_profile">Perfil</string>
+    <string name="nav_history">Historial</string>
+    <string name="nav_settings">Ajustes</string>
+
+    <!-- Home Screen -->
+    <string name="bonjour_user">Hola, %1$s 👋</string>
+    <string name="bonjour">Hola 👋</string>
+    <string name="in_fasting">Estás en ayuno</string>
+    <string name="eating_window">Ventana de alimentación</string>
+    <string name="ready_to_start">¿Listo para empezar?</string>
+    <string name="free_mode">LIBRE</string>
+    <string name="weekend_rest">🌞 DESCANSO</string>
+    <string name="fasting_lock">🔒 AYUNO</string>
+    <string name="eating_meal">🍽️ COMIDA</string>
+    <string name="ready_pause">⏸️ LISTO</string>
+    <string name="weekend">Fin de semana</string>
+    <string name="plan_name_format">Plan %1$s</string>
+    <string name="started_at">Empezó a las</string>
+    <string name="scheduled_start">Inicio programado</string>
+    <string name="edit_time">Editar hora</string>
+    <string name="stop_fasting">⏹ Detener</string>
+    <string name="start_fasting">▶️ Empezar ayuno</string>
+    <string name="weekend_info">¡Disfruta de tu fin de semana! El ayuno se reanudará el domingo a las %1$s.</string>
+    <string name="stat_fasting">Ayuno</string>
+    <string name="stat_eating">Comida</string>
+    <string name="stat_level">Nivel</string>
+    <string name="fasting_stages_title">ETAPAS DEL AYUNO</string>
+    <string name="fasting_stages_subtitle">— Qué sucede en tu cuerpo</string>
+    <string name="in_progress">EN CURSO</string>
+    <string name="body_effects_title">🔬 Efectos en el cuerpo:</string>
+    <string name="edit_start_time">Editar hora de inicio</string>
+    <string name="fasting_start_time_title">Hora de inicio del ayuno</string>
+    <string name="adjust_start_time_desc">Ajusta la hora a la que realmente empezaste tu ayuno.</string>
+    <string name="schedule_start_time_desc">Elige la hora a la que deseas empezar tu ayuno diario.</string>
+    <string name="save">Guardar</string>
+    <string name="cancel">Cancelar</string>
+
+    <!-- Plans -->
+    <string name="plan_16_8_title">16:8</string>
+    <string name="plan_16_8_desc">El plan más popular. Ayuna 16h y come durante 8h.</string>
+    <string name="plan_18_6_title">18:6</string>
+    <string name="plan_18_6_desc">Un paso más allá. Ayuna 18h con una ventana de 6h.</string>
+    <string name="plan_20_4_title">20:4</string>
+    <string name="plan_20_4_desc">La Dieta del Guerrero. 20h de ayuno, 4h para comer.</string>
+    <string name="plan_omad_title">OMAD 23:1</string>
+    <string name="plan_omad_desc">Una comida al día (OMAD). Solo una comida al día.</string>
+    <string name="plan_flexible_title">16:8 Flexible</string>
+    <string name="plan_flexible_desc">16/8 de lunes a viernes. Libre el fin de semana.</string>
+    <string name="difficulty_beginner">Principiante</string>
+    <string name="difficulty_intermediate">Intermedio</string>
+    <string name="difficulty_advanced">Avanzado</string>
+    <string name="difficulty_expert">Experto</string>
+    <string name="difficulty_adaptive">Adaptativo</string>
+    <string name="choose_fasting">Elegir un ayuno</string>
+    <string name="select_plan_desc">Selecciona el plan que se adapte a tu nivel</string>
+    <string name="fasting_hours_format">🔒 %1$d ayuno</string>
+
+    <!-- Profile -->
+    <string name="my_profile">Mi Perfil</string>
+    <string name="my_body">MI CUERPO</string>
+    <string name="weight">Peso</string>
+    <string name="height">Altura</string>
+    <string name="bmi_title">Índice de Masa Corporal</string>
+    <string name="bmi_label">IMC</string>
+    <string name="weight_evolution">📊 Evolución del peso</string>
+    <string name="weight_evolution_empty">Solo una entrada registrada. Añade otra para ver la evolución.</string>
+    <string name="statistics">ESTADÍSTICAS</string>
+    <string name="total_fasting_hours">Horas totales de ayuno</string>
+    <string name="enter_weight_desc">Introduce tu peso actual en kilogramos</string>
+    <string name="enter_height_desc">Introduce tu altura en centímetros</string>
+
+    <!-- History -->
+    <string name="sessions_count">%1$d sesiones registradas</string>
+    <string name="no_sessions">No hay sesiones por el momento</string>
+    <string name="start_first_fast">¡Empieza tu primer ayuno!</string>
+    <string name="duration_format">%1$dh %2$dm</string>
+
+    <!-- Settings -->
+    <string name="programming">PROGRAMACIÓN</string>
+    <string name="auto_start">Auto-inicio diario</string>
+    <string name="auto_start_desc">El ayuno comienza automáticamente a la hora programada</string>
+    <string name="estimated_end">Fin estimado: %1$s (Plan %2$s)</string>
+    <string name="appearance">APARIENCIA</string>
+    <string name="dark_mode">Modo oscuro</string>
+    <string name="google_drive_backup">COPIA DE SEGURIDAD EN GOOGLE DRIVE</string>
+    <string name="about">ACERCA DE</string>
+    <string name="version_format">Versión %1$s</string>
+    <string name="app_name_text">Fast Master</string>
+    <string name="start_time_question">¿A qué hora deseas empezar tu ayuno?</string>
+
+    <!-- Weight Screen -->
+    <string name="current_weight">Peso actual</string>
+    <string name="weight_calendar">CALENDARIO DE PESAJES</string>
+    <string name="weight_history">HISTORIAL</string>
+
+    <!-- Notifications -->
+    <string name="notification_channel_name">Seguimiento de Ayuno</string>
+    <string name="notification_channel_desc">Notificaciones para el inicio y fin de tus ayunos</string>
+    <string name="default_notification_title">Recordatorio de ayuno</string>
+    <string name="bmi_underweight">Bajo peso</string>
+    <string name="bmi_normal">Normal</string>
+    <string name="bmi_overweight">Sobrepeso</string>
+    <string name="bmi_obese">Obeso</string>
+    <string name="stat_total_fasts">Total ayunos</string>
+    <string name="stat_completed">Completados</string>
+    <string name="view_all">Ver todo</string>
+    <string name="stable">= estable</string>
+    <string name="your_name">Tu nombre</string>
+    <string name="name">Nombre</string>
+    <string name="status_completed">Completado</string>
+    <string name="status_interrupted">Interrumpido</string>
+    <string name="google_signed_in_email">Conectado: %1$s</string>
+    <string name="google_not_connected">No conectado</string>
+    <string name="google_connected_desc">Conectado a Google Drive</string>
+    <string name="google_login_desc">Inicia sesión para respaldar</string>
+    <string name="google_signing_in">Iniciando sesión...</string>
+    <string name="google_sign_in_with">Iniciar sesión con Google</string>
+    <string name="google_backup">Respaldar</string>
+    <string name="google_restore">Restaurar</string>
+    <string name="google_logout">Cerrar sesión</string>
+    <string name="error_backup_failed">Fallo al respaldar</string>
+    <string name="error_restore_failed">No se encontró respaldo o hubo un error</string>
+    <string name="error_generic">Error: %1$s</string>
+    <string name="google_error_cancelled">Sesión cancelada</string>
+    <string name="google_error_already_in_progress">Sesión ya en curso...</string>
+    <string name="google_error_failed">Fallo al iniciar sesión. Verifica la config de Google Cloud.</string>
+    <string name="google_error_network">Error de red. Verifica la conexión a internet.</string>
+    <string name="google_error_dev">Error de desarrollador: verifica SHA-1 y ID de cliente</string>
+    <string name="notif_fasting_start_title">Ayuno comenzado ⏳</string>
+    <string name="notif_fasting_start_msg">Tu ayuno de %1$dh acaba de comenzar. ¡Buena suerte!</string>
+    <string name="notif_eating_start_title">¡Es hora de comer! 🍽️</string>
+    <string name="notif_eating_start_msg">Felicidades, tu ayuno de %1$dh ha terminado.</string>
+    <string name="notif_eating_reminder_title">La ventana de comida termina pronto 🍽️</string>
+    <string name="notif_eating_reminder_msg">El ayuno comienza en 30 minutos. ¡Recuerda beber y prepararte!</string>
+    <string name="notif_fasting_reminder_title">El ayuno termina pronto ⏳</string>
+    <string name="notif_fasting_reminder_msg">Faltan 30 minutos para poder comer. ¡Ya casi está!</string>
+
+    <string name="day_mon">Lun</string>
+    <string name="day_tue">Mar</string>
+    <string name="day_wed">Mié</string>
+    <string name="day_thu">Jue</string>
+    <string name="day_fri">Vie</string>
+    <string name="day_sat">Sáb</string>
+    <string name="day_sun">Dom</string>
+    <string name="elapsed_time">TIEMPO TRANSCURRIDO: %1$s</string>
+    <string name="unit_kg">kg</string>
+    <string name="unit_cm">cm</string>
+    <string name="unit_h">h</string>
+
+    <string name="your_weight">Su peso</string>
+    <string name="your_height">Su altura</string>
+    <string name="weight_on_date">Pesaje del %1$s</string>
+    <string name="edit_name">Editar nombre</string>
+
+    <!-- Fasting Stages -->
+    <string name="stage1_title">Digestión</string>
+    <string name="stage1_short_desc">Tu cuerpo está digiriendo la última comida</string>
+    <string name="stage1_detailed_desc">Tu cuerpo está en pleno proceso de digestión. En cuanto terminas tu última comida, tu sistema digestivo se pone en marcha para descomponer los alimentos. El estómago tritura los nutrientes, mientras las enzimas comienzan a descomponer los carbohidratos, las proteínas y las grasas en moléculas más pequeñas.\n\nEl páncreas juega un papel crucial en esta etapa secretando insulina. La insulina es la hormona de almacenamiento por excelencia: permite que la glucosa (azúcar) entre en tus células para ser utilizada como fuente de energía inmediata. En esta etapa, tu nivel de azúcar en sangre (glucemia) está en su punto máximo y tu cuerpo funciona exclusivamente con la energía proveniente directamente de tu alimentación.\n\nSi has consumido más energía de la que tu cuerpo necesita de inmediato, el exceso de glucosa se almacena en el hígado y en los músculos en forma de glucógeno. Una vez que estas reservas están llenas, cualquier excedente se convierte y se almacena como grasa.\n\nDurante estas primeras horas, no quemas grasa. Tu cuerpo está en un estado anabólico, es decir, está construyendo y almacenando. La hormona de la saciedad (leptina) está alta, lo que significa que no deberías sentir hambre. Es el momento ideal para dejar que tu sistema digestivo haga su trabajo en paz sin sobrecargarlo con nuevos snacks.</string>
+    <string name="stage1_effect1">📈 Insulina alta — el páncreas gestiona el azúcar en sangre</string>
+    <string name="stage1_effect2">🔄 Absorción de nutrientes por el intestino</string>
+    <string name="stage1_effect3">⚡ La glucosa es la principal fuente de energía</string>
+    <string name="stage1_effect4">🧠 El cerebro funciona con glucosa</string>
+    <string name="stage1_effect5">💪 Los músculos almacenan glucógeno</string>
+    <string name="stage1_tip">💡 Consejo: Bebe agua para facilitar la digestión. Evita picar algo, deja que tu cuerpo termine su trabajo serenamente.</string>
+
+    <string name="stage2_title">Caída de la insulina</string>
+    <string name="stage2_short_desc">La insulina disminuye, el cuerpo se prepara</string>
+    <string name="stage2_detailed_desc">La digestión de tu última comida ya ha terminado. Los nutrientes han sido absorbidos y distribuidos, y el nivel de azúcar en tu sangre comienza a bajar a su nivel base. En respuesta a esta bajada de la glucemia, el páncreas ralentiza drásticamente su producción de insulina.\n\nEsta bajada de la insulina es la primera señal crítica que tu cuerpo recibe para modificar su funcionamiento metabólico. Mientras la insulina esté alta, el cuerpo está bloqueado en modo \'almacenamiento\'. En cuanto la insulina cae, el cuerpo empieza a comprender que tendrá que buscar energía en otra parte.\n\nPor ahora, todavía no recurre a las grasas. Se dirige a una fuente de energía más accesible: el glucógeno almacenado en el hígado. El hígado comienza a descomponer este glucógeno para liberar glucosa en la sangre, asegurando así una energía constante a tus órganos vitales, especialmente a tu cerebro que consume mucha energía.\n\nA menudo es durante esta fase de transición cuando aparecen las primeras sensaciones de hambre. El estómago está vacío y la ghrelina (la hormona del hambre) puede enviar señales a tu cerebro. Es importante entender que este hambre es a menudo psicológico o relacionado con tus hábitos horarios, y generalmente pasa por oleadas. Tu cuerpo simplemente se está adaptando a su nuevo modo de suministro de energía.</string>
+    <string name="stage2_effect1">📉 La insulina cae — el almacenamiento de grasa se detiene</string>
+    <string name="stage2_effect2">🏦 El hígado comienza a liberar el glucógeno almacenado</string>
+    <string name="stage2_effect3">🔋 Las reservas de azúcar comienzan a disminuir</string>
+    <string name="stage2_effect4">💧 El cuerpo comienza a eliminar el agua retenida</string>
+    <string name="stage2_effect5">🧘 La ghrelina (hormona del hambre) puede aumentar</string>
+    <string name="stage2_tip">💡 Consejo: Es normal tener un poco de hambre. Bebe té verde o café solo sin azúcar para calmar la sensación. ¡Mantente ocupado!</string>
+
+    <string name="stage3_title">Quema de grasas</string>
+    <string name="stage3_short_desc">El cuerpo entra en modo quemagrasas</string>
+    <string name="stage3_detailed_desc">¡Felicidades, estás entrando en una de las fases más buscadas del ayuno intermitente! Después de 8 a 12 horas sin comer, las reservas de glucógeno (azúcar) almacenadas en tu hígado están prácticamente agotadas. Tu cuerpo no tiene otra opción que cambiar su principal fuente de combustible.\n\nActiva entonces un potente proceso metabólico llamado \'lipólisis\'. Se segregan hormonas específicas, como el glucagón y la adrenalina, para ordenar a tus células adiposas que liberen sus reservas. Los triglicéridos almacenados se descomponen en ácidos grasos libres, que se liberan al torrente sanguíneo.\n\nEstos ácidos grasos viajan entonces a las mitocondrias (las centrales energéticas) de tus células para ser quemados y transformados en energía. ¡Literalmente empiezas a derretir tus propias reservas de grasa para hacer funcionar tu cuerpo!\n\nAdemás, es durante esta fase cuando la producción de la hormona del crecimiento humano (HGH) empieza a dispararse (a veces más de un 500%). Esta hormona es extraordinaria porque ordena a tu cuerpo recurrir a la grasa mientras protege cuidadosamente tu masa muscular. La naturaleza diseñó este mecanismo de supervivencia para asegurar que, incluso sin comida inmediata, te mantengas fuerte, alerta y capaz de encontrar comida.</string>
+    <string name="stage3_effect1">🔥 Lipólisis activada — las grasas se descomponen</string>
+    <string name="stage3_effect2">⬆️ Hormona del crecimiento (HGH) al alza (+500%)</string>
+    <string name="stage3_effect3">🏋️ Los músculos están protegidos gracias a la HGH</string>
+    <string name="stage3_effect4">⚡ Los ácidos grasos se convierten en el combustible principal</string>
+    <string name="stage3_effect5">🧬 Se activan los genes de reparación celular</string>
+    <string name="stage3_tip">💡 Consejo: ¡Excelente momento para una caminata ligera o una sesión de deporte suave! El ejercicio moderado acelera la oxidación de las grasas.</string>
+
+    <string name="stage4_title">Cetosis</string>
+    <string name="stage4_short_desc">Producción de cetonas, mayor energía mental</string>
+    <string name="stage4_detailed_desc">Acabas de desbloquear un estado metabólico superior: la cetosis. Mientras la quema de grasas está en pleno apogeo, un nuevo proceso se pone en marcha en tu hígado. Dado que algunas células (especialmente en el cerebro) no pueden utilizar directamente los ácidos grasos libres como combustible, el hígado comienza a convertir parte de estos ácidos grasos en cuerpos cetónicos (principalmente beta-hidroxibutirato y acetoacetato).\n\nLas cetonas son un \'supercombustible\'. Son pequeñas, solubles en agua y atraviesan fácilmente la barrera hematoencefálica. Tu cerebro, que suele funcionar con glucosa, de repente empieza a consumir estas cetonas. Y el resultado es a menudo espectacular: muchos ayunadores describen una inmensa claridad mental, una concentración extrema y la desaparición de la neblina mental (\'brain fog\').\n\nA diferencia de la glucosa, que provoca picos y caídas de energía, la energía proporcionada por las cetonas es constante, fluida y duradera, ya que proviene de una reserva de grasa prácticamente ilimitada.\n\nDurante esta fase, la inflamación global en tu cuerpo empieza a disminuir considerablemente. Las cetonas actúan como potentes moléculas de señalización, reduciendo el estrés oxidativo y disminuyendo los marcadores inflamatorios. Además, se observa un aumento en la producción de BDNF (Factor Neurotrófico Derivado del Cerebro), una proteína que favorece la supervivencia y el crecimiento de nuevas neuronas. ¡Tu cerebro se fortalece!</string>
+    <string name="stage4_effect1">🧪 El hígado produce cuerpos cetónicos (BHB)</string>
+    <string name="stage4_effect2">🧠 El cerebro utiliza cetonas — ¡claridad mental!</string>
+    <string name="stage4_effect3">🔬 Reducción de la inflamación (Proteína C reactiva ↓)</string>
+    <string name="stage4_effect4">📈 Aumento de BDNF — factor de crecimiento cerebral</string>
+    <string name="stage4_effect5">😌 Energía estable — se acabaron los bajones</string>
+    <string name="stage4_effect6">🎯 Concentración y enfoque mejorados</string>
+    <string name="stage4_tip">💡 Consejo: ¡Disfruta de esta claridad mental excepcional! Es el momento ideal para el trabajo intelectual complejo, la meditación o la creatividad.</string>
+
+    <string name="stage5_title">Autofagia</string>
+    <string name="stage5_short_desc">Las células se limpian y regeneran</string>
+    <string name="stage5_detailed_desc">Estás entrando en la fase más fascinante y curativa del ayuno: la autofagia. Del griego \'auto\' (uno mismo) y \'phagein\' (comer), autofagia significa literalmente \'comerse a sí mismo\'. Es el mecanismo de reciclaje y limpieza interna de tu cuerpo a nivel celular.\n\nPrivado de nutrientes externos durante mucho tiempo, tu cuerpo se vuelve extremadamente ahorrador e ingenioso. Las células escanean su propio interior para detectar todo lo que es viejo, dañado o inútil: proteínas mal plegadas, desechos celulares, mitocondrias defectuosas (mitofagia) e incluso algunos virus o bacterias intracelulares.\n\nEstructuras especiales llamadas lisosomas engullen estos desechos y los descomponen mediante potentes enzimas. Los bloques de construcción obtenidos (como los aminoácidos) se reciclan para crear nuevas piezas celulares sanas o proporcionar energía. Es una verdadera limpieza de primavera profunda que purifica tu organismo desde el interior.\n\nA largo plazo, estimular regularmente la autofagia mediante el ayuno es considerado por la ciencia como uno de los mecanismos antienvejecimiento más potentes. Este proceso ayuda a prevenir la acumulación de placas amiloides en el cerebro (asociadas a la enfermedad de Alzheimer) y reduce el riesgo de muchas enfermedades crónicas relacionadas con el envejecimiento celular. Tu cuerpo sana y rejuvenece.</string>
+    <string name="stage5_effect1">♻️ Reciclaje de proteínas dañadas</string>
+    <string name="stage5_effect2">🧹 Eliminación de mitocondrias defectuosas</string>
+    <string name="stage5_effect3">🛡️ Fortalecimiento del sistema inmunitario</string>
+    <string name="stage5_effect4">🧬 Reparación del ADN acelerada</string>
+    <string name="stage5_effect5">⏳ Mecanismos antienvejecimiento activados</string>
+    <string name="stage5_effect6">🦠 Destrucción de patógenos intracelulares</string>
+    <string name="stage5_tip">💡 Consejo: La hidratación es clave. El agua purificada, el té verde y el café solo aceleran la autofagia. Evita absolutamente cualquier aporte calórico para no interrumpirla.</string>
+
+    <string name="stage6_title">Regeneración profunda</string>
+    <string name="stage6_short_desc">Regeneración celular máxima</string>
+    <string name="stage6_detailed_desc">Al superar la barrera de las 24 horas, alcanzas la cima de los beneficios terapéuticos del ayuno prolongado. Tu cuerpo entra en un estado de regeneración profunda e intensa. La autofagia, iniciada en la etapa anterior, funciona ahora a todo su potencial, barriendo los tejidos dañados en todos los órganos de tu cuerpo.\n\nEl fenómeno más notable en esta etapa es la renovación de tus células madre. Estas células \'vírgenes\', capaces de transformarse en cualquier tipo de célula tisular, se activan masivamente. Cuando vuelvas a comer (al romper el ayuno), estas células madre se utilizarán para reconstruir tejidos totalmente nuevos y sanos.\n\nLa hormona del crecimiento humano (HGH) se dispara hasta alcanzar niveles un 2000% superiores a lo normal. Este aumento drástico no es casualidad: sirve para preservar al máximo tu masa muscular y optimizar la reparación de los tejidos.\n\nTu sistema inmunitario también experimenta un verdadero reinicio (\'reset\'). El ayuno prolongado destruye un gran número de glóbulos blancos viejos o ineficientes. Para compensar, el cuerpo produce nuevas células inmunitarias robustas al volver a comer, rejuveneciendo así tus defensas naturales. Finalmente, la sensibilidad de tus células a la insulina se vuelve óptima, previniendo activamente la diabetes tipo 2 y los síndromes metabólicos. Estás haciendo un \'reboot\' completo de tu biología.</string>
+    <string name="stage6_effect1">🚀 HGH hasta +2000% — regeneración muscular</string>
+    <string name="stage6_effect2">🌱 Renovación de células madre (Reset)</string>
+    <string name="stage6_effect3">🔄 Reinicio del sistema inmunitario</string>
+    <string name="stage6_effect4">💉 Sensibilidad a la insulina máxima</string>
+    <string name="stage6_effect5">🧬 Regeneración del ADN y los telómeros</string>
+    <string name="stage6_effect6">🧠 Neurogénesis — creación de nuevas neuronas</string>
+    <string name="stage6_tip">💡 Consejo: Esta etapa es potente pero reservada para ayunadores experimentados. Asegúrate de tener un aporte suficiente de electrolitos (sodio, potasio, magnesio) y escucha siempre a tu cuerpo.</string>
+</resources>

@@ -1,0 +1,231 @@
+<resources>
+    <string name="app_name">Fast Master</string>
+    <string name="default_web_client_id">511788825944-lq3emrev9q9eeoir22nfpoc51655oech.apps.googleusercontent.com</string>
+
+    <!-- Navigation -->
+    <string name="nav_home">Accueil</string>
+    <string name="nav_plans">Jeûne</string>
+    <string name="nav_profile">Profil</string>
+    <string name="nav_history">Historique</string>
+    <string name="nav_settings">Réglages</string>
+
+    <!-- Home Screen -->
+    <string name="bonjour_user">Bonjour, %1$s 👋</string>
+    <string name="bonjour">Bonjour 👋</string>
+    <string name="in_fasting">Vous êtes en jeûne</string>
+    <string name="eating_window">Fenêtre alimentaire</string>
+    <string name="ready_to_start">Prêt à commencer ?</string>
+    <string name="free_mode">LIBRE</string>
+    <string name="weekend_rest">🌞 REPOS</string>
+    <string name="fasting_lock">🔒 JEÛNE</string>
+    <string name="eating_meal">🍽️ REPAS</string>
+    <string name="ready_pause">⏸️ PRÊT</string>
+    <string name="weekend">Week-end</string>
+    <string name="plan_name_format">Plan %1$s</string>
+    <string name="started_at">Débuté à</string>
+    <string name="scheduled_start">Début programmé</string>
+    <string name="edit_time">Modifier l\'heure</string>
+    <string name="stop_fasting">⏹ Arrêter</string>
+    <string name="start_fasting">▶️ Commencer le jeûne</string>
+    <string name="weekend_info">Profitez de votre week-end ! Le jeûne reprendra dimanche à %1$s.</string>
+    <string name="stat_fasting">Jeûne</string>
+    <string name="stat_eating">Repas</string>
+    <string name="stat_level">Niveau</string>
+    <string name="fasting_stages_title">ÉTAPES DU JEÛNE</string>
+    <string name="fasting_stages_subtitle">— Ce qui se passe dans votre corps</string>
+    <string name="in_progress">EN COURS</string>
+    <string name="body_effects_title">🔬 Effets sur le corps :</string>
+    <string name="edit_start_time">Modifier l\'heure de début</string>
+    <string name="fasting_start_time_title">Heure de début du jeûne</string>
+    <string name="adjust_start_time_desc">Ajustez l\'heure à laquelle vous avez réellement commencé votre jeûne.</string>
+    <string name="schedule_start_time_desc">Choisissez l\'heure à laquelle vous souhaitez commencer votre jeûne quotidien.</string>
+    <string name="save">Enregistrer</string>
+    <string name="cancel">Annuler</string>
+
+    <!-- Plans -->
+    <string name="plan_16_8_title">16:8</string>
+    <string name="plan_16_8_desc">Le plan le plus populaire. Jeûnez 16h et mangez pendant 8h.</string>
+    <string name="plan_18_6_title">18:6</string>
+    <string name="plan_18_6_desc">Un pas de plus. Jeûnez 18h avec une fenêtre de 6h.</string>
+    <string name="plan_20_4_title">20:4</string>
+    <string name="plan_20_4_desc">Le Warrior Diet. 20h de jeûne, 4h pour manger.</string>
+    <string name="plan_omad_title">OMAD 23:1</string>
+    <string name="plan_omad_desc">One Meal A Day. Un seul repas par jour.</string>
+    <string name="plan_flexible_title">16:8 Flexible</string>
+    <string name="plan_flexible_desc">16/8 du Lundi au Vendredi. Libre le week-end.</string>
+    <string name="difficulty_beginner">Débutant</string>
+    <string name="difficulty_intermediate">Intermédiaire</string>
+    <string name="difficulty_advanced">Avancé</string>
+    <string name="difficulty_expert">Expert</string>
+    <string name="difficulty_adaptive">Adaptatif</string>
+    <string name="choose_fasting">Choisir un Jeûne</string>
+    <string name="select_plan_desc">Sélectionnez le plan qui correspond à votre niveau</string>
+    <string name="fasting_hours_format">🔒 %1$d jeûne</string>
+
+    <!-- Profile -->
+    <string name="my_profile">Mon Profil</string>
+    <string name="my_body">MON CORPS</string>
+    <string name="weight">Poids</string>
+    <string name="height">Taille</string>
+    <string name="bmi_title">Indice de Masse Corporelle</string>
+    <string name="bmi_label">IMC</string>
+    <string name="weight_evolution">📊 Évolution du poids</string>
+    <string name="weight_evolution_empty">Une seule entrée enregistrée. Ajoutez-en une autre pour voir l\'évolution.</string>
+    <string name="statistics">STATISTIQUES</string>
+    <string name="total_fasting_hours">Heures de jeûne total</string>
+    <string name="enter_weight_desc">Entrez votre poids actuel en kilogrammes</string>
+    <string name="enter_height_desc">Entrez votre taille en centimètres</string>
+
+    <!-- History -->
+    <string name="sessions_count">%1$d sessions enregistrées</string>
+    <string name="no_sessions">Aucune session pour le moment</string>
+    <string name="start_first_fast">Commencez votre premier jeûne !</string>
+    <string name="duration_format">%1$dh%2$dm</string>
+
+    <!-- Settings -->
+    <string name="programming">PROGRAMMATION</string>
+    <string name="auto_start">Auto-démarrage quotidien</string>
+    <string name="auto_start_desc">Le jeûne démarre automatiquement à l\'heure programmée</string>
+    <string name="estimated_end">Fin estimée : %1$s (Plan %2$s)</string>
+    <string name="appearance">APPARENCE</string>
+    <string name="dark_mode">Mode sombre</string>
+    <string name="google_drive_backup">SAUVEGARDE GOOGLE DRIVE</string>
+    <string name="about">À PROPOS</string>
+    <string name="version_format">Version %1$s</string>
+    <string name="app_name_text">Fast Master</string>
+    <string name="start_time_question">À quelle heure souhaitez-vous commencer votre jeûne ?</string>
+
+    <!-- Weight Screen -->
+    <string name="current_weight">Poids actuel</string>
+    <string name="weight_calendar">CALENDRIER DES PESÉES</string>
+    <string name="weight_history">HISTORIQUE</string>
+
+    <!-- Notifications -->
+    <string name="notification_channel_name">Suivi du Jeûne</string>
+    <string name="notification_channel_desc">Notifications pour le début et la fin de vos jeûnes</string>
+    <string name="default_notification_title">Rappel de jeûne</string>
+    <string name="bmi_underweight">Sous-poids</string>
+    <string name="bmi_normal">Normal</string>
+    <string name="bmi_overweight">Surpoids</string>
+    <string name="bmi_obese">Obèse</string>
+    <string name="stat_total_fasts">Total jeûnes</string>
+    <string name="stat_completed">Complétés</string>
+    <string name="view_all">Voir tout</string>
+    <string name="stable">= stable</string>
+    <string name="your_name">Votre nom</string>
+    <string name="name">Nom</string>
+    <string name="status_completed">Complété</string>
+    <string name="status_interrupted">Interrompu</string>
+    <string name="google_signed_in_email">Connecté : %1$s</string>
+    <string name="google_not_connected">Non connecté</string>
+    <string name="google_connected_desc">Connecté à Google Drive</string>
+    <string name="google_login_desc">Connectez-vous pour sauvegarder</string>
+    <string name="google_signing_in">Connexion en cours...</string>
+    <string name="google_sign_in_with">Se connecter avec Google</string>
+    <string name="google_backup">Sauvegarder</string>
+    <string name="google_restore">Restaurer</string>
+    <string name="google_logout">Se déconnecter</string>
+    <string name="error_backup_failed">Échec de la sauvegarde</string>
+    <string name="error_restore_failed">Aucune sauvegarde trouvée ou erreur</string>
+    <string name="error_generic">Erreur : %1$s</string>
+    <string name="google_error_cancelled">Connexion annulée</string>
+    <string name="google_error_already_in_progress">Connexion déjà en cours...</string>
+    <string name="google_error_failed">Échec de connexion. Vérifiez votre configuration Google Cloud.</string>
+    <string name="google_error_network">Erreur réseau. Vérifiez votre connexion Internet.</string>
+    <string name="google_error_dev">Erreur développeur : vérifiez SHA-1 et l\'ID client</string>
+    <string name="notif_fasting_start_title">Jeûne commencé ⏳</string>
+    <string name="notif_fasting_start_msg">Votre jeûne de %1$dh vient de débuter. Bonne chance !</string>
+    <string name="notif_eating_start_title">C\'est l\'heure de manger ! 🍽️</string>
+    <string name="notif_eating_start_msg">Félicitations, votre jeûne de %1$dh est terminé.</string>
+    <string name="notif_eating_reminder_title">Fenêtre de repas bientôt finie 🍽️</string>
+    <string name="notif_eating_reminder_msg">Le jeûne commence dans 30 minutes. Pensez à boire et à vous préparer !</string>
+    <string name="notif_fasting_reminder_title">Fin du jeûne imminente ⏳</string>
+    <string name="notif_fasting_reminder_msg">Encore 30 minutes avant de pouvoir manger. Presque fini !</string>
+
+    <string name="day_mon">Lun</string>
+    <string name="day_tue">Mar</string>
+    <string name="day_wed">Mer</string>
+    <string name="day_thu">Jeu</string>
+    <string name="day_fri">Ven</string>
+    <string name="day_sat">Sam</string>
+    <string name="day_sun">Dim</string>
+    <string name="elapsed_time">TEMPS ÉCOULÉ : %1$s</string>
+    <string name="unit_kg">kg</string>
+    <string name="unit_cm">cm</string>
+    <string name="unit_h">h</string>
+
+    <string name="your_weight">Votre poids</string>
+    <string name="your_height">Votre taille</string>
+    <string name="weight_on_date">Pesée du %1$s</string>
+    <string name="edit_name">Modifier le nom</string>
+
+    <!-- Fasting Stages -->
+    <!-- Stage 1 -->
+    <string name="stage1_title">Digestion</string>
+    <string name="stage1_short_desc">Votre corps digère le dernier repas</string>
+    <string name="stage1_detailed_desc">Votre corps est en plein travail de digestion. Dès que vous terminez votre dernier repas, votre système digestif se met en action pour décomposer les aliments. L\'estomac broie les nutriments, tandis que les enzymes commencent à décomposer les glucides, les protéines et les lipides en molécules plus petites.\n\nLe pancréas joue un rôle crucial à ce stade en sécrétant de l\'insuline. L\'insuline est l\'hormone de stockage par excellence : elle permet au glucose (sucre) de pénétrer dans vos cellules pour être utilisé comme source d\'énergie immédiate. À ce stade, votre taux de sucre dans le sang (glycémie) est à son maximum, et votre corps fonctionne exclusivement sur cette énergie provenant directement de votre alimentation.\n\nSi vous avez consommé plus d\'énergie que ce dont votre corps a besoin dans l\'immédiat, l\'excès de glucose est stocké dans le foie et dans vos muscles sous forme de glycogène. Une fois ces réserves pleines, le surplus éventuel est converti et stocké sous forme de cellules adipeuses (graisse).\n\nPendant ces premières heures, vous ne brûlez aucune graisse. Votre corps est dans un état anabolique, c\'est-à-dire qu\'il construit et stocke. L\'hormone de satiété (leptine) est élevée, ce qui signifie que vous ne devriez pas ressentir la faim. C\'est le moment idéal pour laisser votre système digestif faire son travail en paix sans le surcharger avec de nouvelles collations.</string>
+    <string name="stage1_effect1">📈 Insuline élevée — le pancréas gère le sucre sanguin</string>
+    <string name="stage1_effect2">🔄 Absorption des nutriments par l\'intestin</string>
+    <string name="stage1_effect3">⚡ Le glucose est la source d\'énergie principale</string>
+    <string name="stage1_effect4">🧠 Le cerveau fonctionne au glucose</string>
+    <string name="stage1_effect5">💪 Les muscles stockent le glycogène</string>
+    <string name="stage1_tip">💡 Conseil : Buvez de l\'eau pour faciliter la digestion. Évitez de grignoter, laissez votre corps terminer son travail sereinement.</string>
+
+    <!-- Stage 2 -->
+    <string name="stage2_title">Baisse de l\'insuline</string>
+    <string name="stage2_short_desc">L\'insuline diminue, le corps se prépare</string>
+    <string name="stage2_detailed_desc">La digestion de votre dernier repas est désormais achevée. Les nutriments ont été absorbés et distribués, et le taux de sucre dans votre sang commence à redescendre à son niveau de base. En réponse à cette baisse de la glycémie, le pancréas ralentit drastiquement sa production d\'insuline.\n\nCette baisse de l\'insuline est le premier signal critique que votre corps reçoit pour modifier son fonctionnement métabolique. Tant que l\'insuline est élevée, le corps est bloqué en mode \'stockage\'. Dès que l\'insuline chute, le corps commence à comprendre qu\'il va devoir chercher de l\'énergie ailleurs.\n\nPour l\'instant, il ne puise pas encore dans les graisses. Il se tourne vers une source d\'énergie plus facilement accessible : le glycogène stocké dans votre foie. Le foie commence à décomposer ce glycogène pour libérer du glucose dans le sang, assurant ainsi une énergie constante à vos organes vitaux, en particulier votre cerveau qui est très gourmand en énergie.\n\nC\'est souvent durant cette phase de transition que les premières sensations de faim apparaissent. L\'estomac est vide, et la ghréline (l\'hormone de la faim) peut envoyer des signaux à votre cerveau. Il est important de comprendre que cette faim est souvent psychologique ou liée à vos habitudes horaires, et elle passe généralement par vagues. Votre corps est simplement en train de s\'adapter à son nouveau mode d\'approvisionnement en énergie.</string>
+    <string name="stage2_effect1">📉 L\'insuline chute — le stockage de graisse s\'arrête</string>
+    <string name="stage2_effect2">🏦 Le foie commence à libérer le glycogène stocké</string>
+    <string name="stage2_effect3">🔋 Les réserves de sucre commencent à diminuer</string>
+    <string name="stage2_effect4">💧 Le corps commence à libérer de l\'eau retenue</string>
+    <string name="stage2_effect5">🧘 La ghréline (hormone de la faim) peut augmenter</string>
+    <string name="stage2_tip">💡 Conseil : C\'est normal d\'avoir un peu faim. Buvez du thé vert ou du café noir sans sucre pour couper la sensation. Restez occupé !</string>
+
+    <!-- Stage 3 -->
+    <string name="stage3_title">Combustion des graisses</string>
+    <string name="stage3_short_desc">Le corps passe en mode brûleur de graisses</string>
+    <string name="stage3_detailed_desc">Félicitations, vous entrez dans l\'une des phases les plus recherchées du jeûne intermittent ! Après 8 à 12 heures sans manger, les réserves de glycogène (sucre) stockées dans votre foie sont pratiquement épuisées. Votre corps n\'a plus d\'autre choix que de changer de source de carburant principal.\n\nIl active alors un processus métabolique puissant appelé la \'lipolyse\'. Des hormones spécifiques, comme le glucagon et l\'adrénaline, sont sécrétées pour donner l\'ordre à vos cellules adipeuses (votre tissu graisseux) de libérer leurs réserves. Les triglycérides stockés sont décomposés en acides gras libres, qui sont relâchés dans la circulation sanguine.\n\nCes acides gras voyagent alors vers les mitochondries (les centrales énergétiques) de vos cellules pour y être brûlés et transformés en énergie. Vous commencez littéralement à fondre vos propres réserves de graisse pour faire fonctionner votre corps !\n\nDe plus, c\'est durant cette phase que la production d\'hormone de croissance humaine (HGH) commence à grimper en flèche (parfois de plus de 500%). Cette hormone est extraordinaire car elle ordonne à votre corps de puiser dans la graisse tout en protégeant précieusement votre masse musculaire. La nature a conçu ce mécanisme de survie pour s\'assurer que, même sans nourriture immédiate, vous restiez fort, alerte et capable de trouver à manger.</string>
+    <string name="stage3_effect1">🔥 Lipolyse activée — les graisses sont décomposées</string>
+    <string name="stage3_effect2">⬆️ Hormone de croissance (HGH) en hausse (+500%)</string>
+    <string name="stage3_effect3">🏋️ Les muscles sont protégés grâce à l\'HGH</string>
+    <string name="stage3_effect4">⚡ Les acides gras deviennent le carburant principal</string>
+    <string name="stage3_effect5">🧬 Les gènes de réparation cellulaire s\'activent</string>
+    <string name="stage3_tip">💡 Conseil : Excellent moment pour une marche légère ou une séance de sport douce ! L\'exercice modéré accélère l\'oxydation des graisses.</string>
+
+    <!-- Stage 4 -->
+    <string name="stage4_title">Cétose</string>
+    <string name="stage4_short_desc">Production de cétones, énergie mentale accrue</string>
+    <string name="stage4_detailed_desc">Vous venez de débloquer un état métabolique supérieur : la cétose. Alors que la combustion des graisses bat son plein, un nouveau processus se met en place dans votre foie. Puisque certaines cellules (notamment dans le cerveau) ne peuvent pas utiliser directement les acides gras libres pour fonctionner, le foie commence à convertir une partie de ces acides gras en corps cétoniques (principalement le bêta-hydroxybutyrate et l\'acétoacétate).\n\nLes cétones sont un \'super-carburant\'. Elles sont petites, solubles dans l\'eau, et traversent facilement la barrière hémato-encéphalique. Votre cerveau, qui carbure habituellement au glucose, se met soudainement à consommer ces cétones. Et le résultat est souvent spectaculaire : beaucoup de jeûneurs décrivent une immense clarté mentale, une concentration accrue à l\'extrême, et la disparition du brouillard cérébral (\'brain fog\').\n\nContrairement au glucose qui provoque des pics et des chutes d\'énergie (les fameux coups de barre), l\'énergie fournie par les cétones est constante, lisse et durable, car elle provient d\'un réservoir de graisses quasiment illimité.\n\nPendant cette phase, l\'inflammation globale dans votre corps commence à chuter considérablement. Les cétones agissent comme des molécules de signalisation puissantes, réduisant le stress oxydatif et diminuant les marqueurs inflammatoires. De plus, on observe une augmentation de la production de BDNF (Facteur neurotrophique dérivé du cerveau), une protéine qui favorise la survie et la croissance de nouveaux neurones. Votre cerveau se renforce !</string>
+    <string name="stage4_effect1">🧪 Le foie produit des corps cétoniques (BHB)</string>
+    <string name="stage4_effect2">🧠 Le cerveau utilise les cétones — clarté mentale !</string>
+    <string name="stage4_effect3">🔬 Réduction de l\'inflammation (protéine C-réactive ↓)</string>
+    <string name="stage4_effect4">📈 BDNF augmente — facteur de croissance cérébrale</string>
+    <string name="stage4_effect5">😌 Énergie stable — fini les coups de barre</string>
+    <string name="stage4_effect6">🎯 Concentration et focus améliorés</string>
+    <string name="stage4_tip">💡 Conseil : Profitez de cette clarté mentale exceptionnelle ! C\'est le moment idéal pour le travail intellectuel complexe, la méditation ou la créativité.</string>
+
+    <!-- Stage 5 -->
+    <string name="stage5_title">Autophagie</string>
+    <string name="stage5_short_desc">Les cellules se nettoient et se régénèrent</string>
+    <string name="stage5_detailed_desc">Vous entrez dans la phase la plus fascinante et la plus curative du jeûne : l\'autophagie. Du grec \'auto\' (soi-même) et \'phagein\' (manger), l\'autophagie signifie littéralement \'se manger soi-même\'. C\'est le mécanisme de recyclage et de nettoyage interne de votre corps à l\'échelle cellulaire.\n\nPrivé de nutriments externes depuis longtemps, votre corps devient extrêmement économe et ingénieux. Les cellules vont scanner leur propre intérieur pour repérer tout ce qui est vieux, endommagé ou inutile : protéines mal repliées, débris cellulaires, mitochondries défectueuses (mitophagie), et même certains virus ou bactéries intracellulaires.\n\nDes structures spéciales appelées lysosomes engloutissent ces déchets et les décomposent grâce à de puissantes enzymes. Les éléments de base obtenus (comme les acides aminés) sont alors recyclés pour créer de nouvelles pièces cellulaires saines ou fournir de l\'énergie. C\'est un véritable nettoyage de printemps profond qui purifie votre organisme de l\'intérieur.\n\nSur le long terme, stimuler régulièrement l\'autophagie par le jeûne est considéré par la science comme l\'un des mécanismes anti-âge les plus puissants. Ce processus aide à prévenir l\'accumulation de plaques amyloïdes dans le cerveau (associées à la maladie d\'Alzheimer) et réduit le risque de nombreuses maladies chroniques liées au vieillissement cellulaire. Votre corps guérit et rajeunit.</string>
+    <string name="stage5_effect1">♻️ Recyclage des protéines endommagées</string>
+    <string name="stage5_effect2">🧹 Élimination des mitochondries défectueuses</string>
+    <string name="stage5_effect3">🛡️ Renforcement du système immunitaire</string>
+    <string name="stage5_effect4">🧬 Réparation de l\'ADN accélérée</string>
+    <string name="stage5_effect5">⏳ Mécanismes anti-vieillissement activés</string>
+    <string name="stage5_effect6">🦠 Destruction des agents pathogènes intracellulaires</string>
+    <string name="stage5_tip">💡 Conseil : L\'hydratation est clé. L\'eau purifiée, le thé vert et le café noir accélèrent l\'autophagie. Évitez absolument le moindre apport calorique pour ne pas l\'interrompre.</string>
+
+    <!-- Stage 6 -->
+    <string name="stage6_title">Régénération profonde</string>
+    <string name="stage6_short_desc">Régénération cellulaire maximale</string>
+    <string name="stage6_detailed_desc">En dépassant la barre des 24 heures, vous atteignez le sommet des bienfaits thérapeutiques du jeûne prolongé. Votre corps entre dans un état de régénération profonde et intense. L\'autophagie, initiée à l\'étape précédente, fonctionne maintenant à son plein potentiel, balayant les tissus endommagés dans tous les organes de votre corps.\n\nLe phénomène le plus remarquable à ce stade est le renouvellement de vos cellules souches. Ces cellules \'vierges\', capables de se transformer en n\'importe quel type de cellule tissulaire, sont activées massivement. Lorsque vous recommencerez à manger (à la rupture du jeûne), ces cellules souches seront utilisées pour reconstruire de nouveaux tissus entièrement neufs et sains.\n\nL\'hormone de croissance humaine (HGH) explose pour atteindre des taux jusqu\'à 2000% supérieurs à la normale. Cette augmentation drastique n\'est pas là par hasard : elle sert à préserver au maximum votre masse musculaire et à optimiser la réparation tissulaire.\n\nVotre système immunitaire subit également une véritable réinitialisation (\'reset\'). Le jeûne prolongé détruit un grand nombre de globules blancs anciens ou inefficaces. Pour compenser, le corps produit de nouvelles cellules immunitaires robustes dès la reprise alimentaire, rajeunissant ainsi vos défenses naturelles. Enfin, la sensibilité de vos cellules à l\'insuline devient optimale, prévenant activement le diabète de type 2 et les syndromes métaboliques. Vous faites un \'reboot\' complet de votre biologie.</string>
+    <string name="stage6_effect1">🚀 HGH jusqu\'à +2000% — régénération musculaire</string>
+    <string name="stage6_effect2">🌱 Renouvellement des cellules souches (Reset)</string>
+    <string name="stage6_effect3">🔄 Réinitialisation du système immunitaire</string>
+    <string name="stage6_effect4">💉 Sensibilité à l\'insuline maximale</string>
+    <string name="stage6_effect5">🧬 Régénération de l\'ADN et des télomères</string>
+    <string name="stage6_effect6">🧠 Neurogenèse — création de nouveaux neurones</string>
+    <string name="stage6_tip">💡 Conseil : Cette étape est puissante mais réservée aux jeûneurs expérimentés. Assurez-vous d\'avoir un apport suffisant en électrolytes (sodium, potassium, magnésium) et écoutez toujours votre corps.</string>
+</resources>
