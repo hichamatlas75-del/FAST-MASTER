@@ -1,21 +1,22 @@
-﻿# Gradle and build caches
-.gradle/
+﻿# Android Studio & Gradle (Local only)
+app/
 build/
-app/build/
-**/build/
-/captures/
-.externalNativeBuild/
-.cxx/
-
-# IDE files
+builds/
+gradle/
+.gradle/
 .idea/
-*.iml
-.DS_Store
-
-# Local properties & Security Keystores
+gradlew
+gradlew.bat
+build.gradle.kts
+settings.gradle.kts
+gradle.properties
 local.properties
+*.iml
 *.jks
 *.keystore
 
-# Firebase temp
+# Deployment caches
 .firebase/
+firebase.json
+.firebaserc
+web/
