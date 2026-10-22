@@ -68,8 +68,8 @@ class AppState {
             height: 175,
             darkMode: true,
             sound: true,
-            autoStart: false,
-            scheduleHour: 20,
+            autoStart: true,
+            scheduleHour: 15,
             scheduleMinute: 0
         };
 
@@ -77,8 +77,18 @@ class AppState {
         this.fasting = savedFasting ? JSON.parse(savedFasting) : {
             isActive: false,
             startTime: 0,
-            planKey: 'PLAN_16_8'
+            planKey: 'PLAN_18_6'
         };
+
+        // Migration et configuration des valeurs par défaut (18:6 de 15h à 09h)
+        if (this.user.autoStart === undefined || (!this.user.scheduleCustomized && (this.user.scheduleHour === 20 || !this.user.scheduleHour))) {
+            this.user.autoStart = true;
+            this.user.scheduleHour = 15;
+            this.user.scheduleMinute = 0;
+        }
+        if (!this.fasting.planKey || (!this.user.planSelected && this.fasting.planKey === 'PLAN_16_8')) {
+            this.fasting.planKey = 'PLAN_18_6';
+        }
 
         const savedSessions = localStorage.getItem('fastmaster_sessions');
         this.sessions = savedSessions ? JSON.parse(savedSessions) : [];
@@ -171,9 +181,71 @@ function switchTab(tabId) {
     }
 }
 
+// --- Fasting Schedule & Auto-Start Logic ---
+function updateScheduleDescription() {
+    const descEl = document.getElementById('scheduleDescText');
+    if (!descEl) return;
+    const plan = PLANS[state.fasting.planKey] || PLANS.PLAN_18_6;
+    const startH = state.user.scheduleHour ?? 15;
+    const startM = state.user.scheduleMinute ?? 0;
+    const endH = (startH + plan.fastingHours) % 24;
+    const startStr = String(startH).padStart(2, '0') + ':' + String(startM).padStart(2, '0');
+    const endStr = String(endH).padStart(2, '0') + ':' + String(startM).padStart(2, '0');
+    descEl.textContent = 'Jeûne ' + plan.name + ' (' + startStr + ' → ' + endStr + ') • Repas (' + endStr + ' → ' + startStr + ')';
+}
+
+function checkAutoSchedule() {
+    if (!state.user.autoStart) return;
+
+    const plan = PLANS[state.fasting.planKey] || PLANS.PLAN_18_6;
+    const now = new Date();
+    const schedH = state.user.scheduleHour ?? 15;
+    const schedM = state.user.scheduleMinute ?? 0;
+    const durationHours = plan.fastingHours;
+
+    const todayStart = new Date(now);
+    todayStart.setHours(schedH, schedM, 0, 0);
+
+    let cycleStart = new Date(todayStart);
+    if (now < todayStart) {
+        cycleStart.setDate(cycleStart.getDate() - 1);
+    }
+    const cycleEnd = new Date(cycleStart.getTime() + durationHours * 3600000);
+
+    const isInWindow = (now >= cycleStart && now < cycleEnd);
+
+    if (state.fasting.isActive) {
+        if (now >= cycleEnd && !state.fasting.completedNotified) {
+            state.fasting.completedNotified = true;
+            state.save();
+            const endHourStr = String(cycleEnd.getHours()).padStart(2, '0') + ':' + String(cycleEnd.getMinutes()).padStart(2, '0');
+            sendBrowserNotification('Objectif de jeûne atteint ! 🎉', 'Votre jeûne ' + plan.name + ' est terminé à ' + endHourStr + '. Votre fenêtre repas commence !');
+            playChime(true);
+        }
+    } else {
+        const lastStop = state.fasting.lastStop || 0;
+        const stoppedThisCycle = (lastStop >= cycleStart.getTime());
+        const alreadyLogged = state.sessions.some(s => Math.abs(s.startTime - cycleStart.getTime()) < 5 * 60000);
+
+        if (isInWindow && !stoppedThisCycle && !alreadyLogged) {
+            state.fasting.isActive = true;
+            state.fasting.startTime = cycleStart.getTime();
+            state.fasting.planKey = state.fasting.planKey || 'PLAN_18_6';
+            state.fasting.completedNotified = false;
+            state.save();
+
+            const endHourStr = String(cycleEnd.getHours()).padStart(2, '0') + ':' + String(cycleEnd.getMinutes()).padStart(2, '0');
+            showToast('⏰ Démarrage automatique : Jeûne ' + plan.name + ' (15h → ' + endHourStr + ')');
+            sendBrowserNotification('Jeûne commencé automatiquement ⏰', 'Votre jeûne ' + plan.name + ' a débuté. Fin prévue à ' + endHourStr + '.');
+        }
+    }
+}
+
 // --- Fasting Timer Logic ---
 function updateTimer() {
-    const plan = PLANS[state.fasting.planKey] || PLANS.PLAN_16_8;
+    checkAutoSchedule();
+
+    const plan = PLANS[state.fasting.planKey] || PLANS.PLAN_18_6;
     const circleRing = document.getElementById('timerProgressRing');
     const badge = document.getElementById('timerBadge');
     const digits = document.getElementById('timerDigits');
@@ -203,12 +275,16 @@ function updateTimer() {
         badge.textContent = '🔒 JEÛNE EN COURS • PLAN ' + plan.name;
         
         const remainingMs = targetMs - elapsedMs;
+        const targetEndDate = new Date(state.fasting.startTime + targetMs);
+        const endH = String(targetEndDate.getHours()).padStart(2, '0');
+        const endM = String(targetEndDate.getMinutes()).padStart(2, '0');
+
         if (remainingMs > 0) {
             const remHrs = Math.floor(remainingMs / 3600000);
             const remMins = Math.floor((remainingMs % 3600000) / 60000);
-            subtext.textContent = 'Objectif dans ' + remHrs + 'h ' + remMins + 'm';
+            subtext.textContent = 'Objectif : Fin à ' + endH + ':' + endM + ' (encore ' + remHrs + 'h ' + remMins + 'm)';
         } else {
-            subtext.textContent = '🎉 Objectif de ' + plan.fastingHours + 'h atteint !';
+            subtext.textContent = '🎉 Objectif de ' + plan.fastingHours + 'h atteint (fini à ' + endH + ':' + endM + ') !';
         }
 
         percentEl.textContent = Math.floor(progress * 100) + '%';
@@ -240,7 +316,13 @@ function updateTimer() {
         badge.className = 'timer-status-badge idle';
         badge.textContent = '⏸️ PRÊT • PLAN ' + plan.name;
         digits.textContent = String(plan.fastingHours).padStart(2, '0') + ':00:00';
-        subtext.textContent = 'Plan sélectionné : ' + plan.name + ' (' + plan.fastingHours + 'h jeûne)';
+
+        const startH = String(state.user.scheduleHour ?? 15).padStart(2, '0');
+        const startM = String(state.user.scheduleMinute ?? 0).padStart(2, '0');
+        const endH = String(((state.user.scheduleHour ?? 15) + plan.fastingHours) % 24).padStart(2, '0');
+        const autoStr = state.user.autoStart ? ' • Auto ' + startH + 'h' + startM : '';
+
+        subtext.textContent = 'Plan ' + plan.name + ' (' + startH + ':' + startM + ' → ' + endH + ':' + startM + ')' + autoStr;
         percentEl.textContent = '0%';
 
         mainBtn.innerHTML = '<span>▶️</span> Commencer le jeûne';
@@ -260,7 +342,7 @@ function toggleFasting() {
     if (state.fasting.isActive) {
         const now = Date.now();
         const durationMs = now - state.fasting.startTime;
-        const plan = PLANS[state.fasting.planKey] || PLANS.PLAN_16_8;
+        const plan = PLANS[state.fasting.planKey] || PLANS.PLAN_18_6;
         const isCompleted = durationMs >= (plan.fastingHours * 3600000);
 
         state.sessions.unshift({
@@ -275,6 +357,7 @@ function toggleFasting() {
 
         state.fasting.isActive = false;
         state.fasting.startTime = 0;
+        state.fasting.lastStop = Date.now();
         state.save();
 
         playChime(isCompleted);
@@ -283,10 +366,11 @@ function toggleFasting() {
     } else {
         state.fasting.isActive = true;
         state.fasting.startTime = Date.now();
+        state.fasting.completedNotified = false;
         state.save();
 
         playChime(true);
-        const plan = PLANS[state.fasting.planKey] || PLANS.PLAN_16_8;
+        const plan = PLANS[state.fasting.planKey] || PLANS.PLAN_18_6;
         showToast('▶️ C\'est parti pour ' + plan.fastingHours + 'h de jeûne !');
         sendBrowserNotification('Jeûne commencé ⏳', 'Votre jeûne de ' + plan.fastingHours + 'h vient de débuter.');
     }
@@ -321,8 +405,10 @@ function renderPlans() {
         card.innerHTML = '<div class="plan-card-left"><span class="plan-emoji">' + p.emoji + '</span><div><div class="plan-name">Plan ' + p.name + '</div><div class="plan-desc">' + p.desc + '</div></div></div><div class="plan-tag">' + (isSelected ? 'Actif ✓' : p.difficulty) + '</div>';
         card.onclick = () => {
             state.fasting.planKey = p.key;
+            state.user.planSelected = true;
             state.save();
             renderPlans();
+            updateScheduleDescription();
             updateTimer();
             showToast('Plan ' + p.name + ' activé !');
         };
@@ -609,9 +695,9 @@ function buildUniversalApkPayload() {
         darkMode: !!state.user.darkMode,
         weight: typeof state.user.weight === 'number' ? state.user.weight : parseFloat(state.user.weight) || 70.0,
         height: parseInt(state.user.height) || 175,
-        scheduleHour: parseInt(state.user.scheduleHour) || 20,
-        scheduleMinute: parseInt(state.user.scheduleMinute) || 0,
-        autoStart: !!state.user.autoStart,
+        scheduleHour: state.user.scheduleHour !== undefined ? parseInt(state.user.scheduleHour) : 15,
+        scheduleMinute: state.user.scheduleMinute !== undefined ? parseInt(state.user.scheduleMinute) : 0,
+        autoStart: state.user.autoStart !== undefined ? !!state.user.autoStart : true,
         weightHistory: apkWeightHistory,
         isFastingActive: !!state.fasting.isActive,
         fastingStartTime: state.fasting.isActive ? (state.fasting.startTime || 0) : 0,
@@ -643,8 +729,8 @@ function applyUniversalApkPayload(data) {
     if (data.autoStart !== undefined) state.user.autoStart = !!data.autoStart;
 
     // 2. Active Fasting Session
-    const planKey = data.fastingPlanActive || data.selectedPlan || (data.fasting && data.fasting.planKey) || 'PLAN_16_8';
-    state.fasting.planKey = PLANS[planKey] ? planKey : 'PLAN_16_8';
+    const planKey = data.fastingPlanActive || data.selectedPlan || (data.fasting && data.fasting.planKey) || 'PLAN_18_6';
+    state.fasting.planKey = PLANS[planKey] ? planKey : 'PLAN_18_6';
 
     if (data.isFastingActive !== undefined) {
         state.fasting.isActive = !!data.isFastingActive;
@@ -1125,11 +1211,39 @@ document.addEventListener('DOMContentLoaded', () => {
     const switchDark = document.getElementById('switchDarkMode');
     const switchSnd = document.getElementById('switchSound');
     const switchAuto = document.getElementById('switchAutoStart');
+    const inputScheduleTime = document.getElementById('inputScheduleTime');
     const switchGoogleSync = document.getElementById('switchGoogleAutoSync');
 
     if (switchDark) switchDark.checked = state.user.darkMode;
     if (switchSnd) switchSnd.checked = state.user.sound;
-    if (switchAuto) switchAuto.checked = state.user.autoStart;
+    if (switchAuto) {
+        switchAuto.checked = !!state.user.autoStart;
+        switchAuto.addEventListener('change', (e) => {
+            state.user.autoStart = e.target.checked;
+            state.save();
+            showToast(e.target.checked ? 'Démarrage automatique activé' : 'Démarrage automatique désactivé');
+            updateScheduleDescription();
+            updateTimer();
+        });
+    }
+
+    if (inputScheduleTime) {
+        const h = String(state.user.scheduleHour ?? 15).padStart(2, '0');
+        const m = String(state.user.scheduleMinute ?? 0).padStart(2, '0');
+        inputScheduleTime.value = h + ':' + m;
+        inputScheduleTime.addEventListener('change', (e) => {
+            const parts = e.target.value.split(':').map(Number);
+            if (parts.length === 2 && !isNaN(parts[0]) && !isNaN(parts[1])) {
+                state.user.scheduleHour = parts[0];
+                state.user.scheduleMinute = parts[1];
+                state.user.scheduleCustomized = true;
+                state.save();
+                updateScheduleDescription();
+                updateTimer();
+                showToast('Heure programmée : ' + e.target.value);
+            }
+        });
+    }
     if (switchGoogleSync) {
         switchGoogleSync.checked = googleSync.auth.autoSync !== false;
         switchGoogleSync.addEventListener('change', (e) => {
@@ -1185,6 +1299,7 @@ document.addEventListener('DOMContentLoaded', () => {
         googleSync.init();
     }, 1000);
 
+    updateScheduleDescription();
     renderPlans();
     updateTimer();
     setInterval(updateTimer, 1000);
